@@ -171,7 +171,7 @@ def script():
 
 
 	# Google Sheet Importing happens here
-	print("Updating history in Chrome")
+	print("Updating history")
 	gc = gspread.authorize(credentials)
 	content = open('history.csv', 'r').read()
 
