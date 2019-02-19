@@ -68,18 +68,6 @@ def sanitize(string):
 
 	return res
 
-def sanitize(string):
-	res = ''
-
-
-	for i in range(len(string)):
-		if ord(string[i]) > 127:
-			res += '&#x{:x};'.format(ord(string[i]))
-		else:
-			res += string[i]
-
-	return res
-
 
 # Parse the command-line arguments
 
@@ -155,6 +143,7 @@ def script():
 		rmtree(temp_dir)
 		exit(1)
 
+	
 	urls = connection.cursor()
 
 	try:
@@ -181,7 +170,7 @@ def script():
 	output_file.close()
 
 
-	## Implement automatic Google Sheet Importing
+	# Google Sheet Importing happens here
 	print("Updating history in Chrome")
 	gc = gspread.authorize(credentials)
 	content = open('history.csv', 'r').read()
