@@ -38,11 +38,7 @@ CREDENTIALS = os.getenv("CREDENTIALS")
 script_version = "0.1"
 
 html_escape_table = {
-	"&": "&amp;",
-	'"': "&quot;",
-	"'": "&#39;",
-	">": "&gt;",
-	"<": "&lt;",
+	'"': "'",
 	}
 
 output_file_template = """{items}\n"""
@@ -59,10 +55,10 @@ def html_escape(text):
 def sanitize(string):
 	res = ''
 	string = html_escape(string)
-	string = string.replace(",", "，")
+
 	for i in range(len(string)):
 		if ord(string[i]) > 127:
-			res += '&#x{:x};'.format(ord(string[i]))
+			res += ''.format(ord(string[i]))
 		else:
 			res += string[i]
 
